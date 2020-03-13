@@ -1,0 +1,64 @@
+
+#=====================================================
+# VISUALISATION
+#=====================================================
+/vis/open OGLIQt
+/vis/drawVolume
+/vis/viewer/flush
+/tracking/storeTrajectory             1
+/vis/scene/add/trajectories
+/vis/scene/endOfEventAction           accumulate
+
+#/vis/scene/add/axes            0 0 0 500 mm
+#/vis/scene/add/text            10 0 0 cm  20 0 0   X
+#/vis/scene/add/text            0 10 0 cm  20 0 0   Y
+#/vis/scene/add/text            0 0 10 cm  20 0 0   Z
+/vis/viewer/set/auxiliaryEdge true
+
+#=====================================================
+# GEOMETRY
+#=====================================================
+
+/gate/geometry/setMaterialDatabase data/GateMaterials.db
+
+# World
+/gate/world/geometry/setXLength 1 m
+/gate/world/geometry/setYLength 1 m
+/gate/world/geometry/setZLength 1 m
+/gate/world/setMaterial Air
+/gate/world/vis/setVisible 0
+
+# Generate materials from Hounsfield units
+/gate/HounsfieldMaterialGenerator/SetMaterialTable data/Schneider2000MaterialsTable.txt
+/gate/HounsfieldMaterialGenerator/SetDensityTable  data/Schneider2000DensitiesTable.txt
+/gate/HounsfieldMaterialGenerator/SetDensityTolerance               0.1 g/cm3
+/gate/HounsfieldMaterialGenerator/SetOutputMaterialDatabaseFilename data/patient-HUmaterials.db
+/gate/HounsfieldMaterialGenerator/SetOutputHUMaterialFilename       data/patient-HU2mat.txt
+/gate/HounsfieldMaterialGenerator/Generate
+
+/gate/world/daughters/name                      patient
+/gate/world/daughters/insert                    ImageNestedParametrisedVolume
+
+/gate/geometry/setMaterialDatabase              data/patient-HUmaterials.db
+/gate/patient/geometry/setHUToMaterialFile      data/patient-HU2mat.txt
+
+############################################  IMAGE GOES HERE #################################################
+
+/gate/patient/geometry/setImage                 output/output-full-Edep.mhd
+
+#################################################################################################################
+/gate/patient/placement/setTranslation 0 0 272 mm
+
+/gate/output/allowNoOutput
+
+#=====================================================
+# INITIALISATION
+#=====================================================
+
+/gate/run/initialize
+
+#=====================================================
+# START BEAMS
+#=====================================================
+/gate/application/setTotalNumberOfPrimaries 0
+/gate/application/start

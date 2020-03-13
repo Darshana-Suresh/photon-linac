@@ -1,0 +1,32 @@
+#KILL ACTORS to kill particles
+
+#------------------------------MLCs
+
+/gate/actor/addActor                           KillActor Left_Leaf_Killer
+/gate/actor/Left_Leaf_Killer/attachTo          MLC_Leaf1_Left_Leaf_Kill_Plane
+#/gate/actor/Left_Leaf_Killer/save              output/killPhS_L.txt
+
+/gate/actor/addActor                           KillActor Right_Leaf_Killer
+/gate/actor/Right_Leaf_Killer/attachTo         MLC_Leaf2_Right_Leaf_Kill_Plane
+#/gate/actor/Right_Leaf_Killer/save             output/killPhS_R.txt
+
+#------------------------------X Jaws
+
+/gate/actor/addActor                      KillActor X1Jaw_Killer
+/gate/actor/X1Jaw_Killer/attachTo         X1Jaw_Kill_Plane
+#/gate/actor/X1Jaw_Killer/save             output/kill_X1.txt
+
+/gate/actor/addActor                      KillActor X2Jaw_Killer
+/gate/actor/X2Jaw_Killer/attachTo         X2Jaw_Kill_Plane
+#/gate/actor/X2Jaw_Killer/save             output/kill_X2.txt
+
+#------------------------------Y Jaws
+
+/gate/actor/addActor                      KillActor Y1Jaw_Killer
+/gate/actor/Y1Jaw_Killer/attachTo         Y1Jaw_Kill_Plane
+#/gate/actor/Y1Jaw_Killer/save             output/kill_Y1.txt
+
+/gate/actor/addActor                      KillActor Y2Jaw_Killer
+/gate/actor/Y2Jaw_Killer/attachTo         Y2Jaw_Kill_Plane
+#/gate/actor/Y2Jaw_Killer/save             output/kill_Y2.txt
+

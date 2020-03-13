@@ -1,0 +1,94 @@
+
+# -----------------------------------------------------
+# LINAC  JAWS
+# -----------------------------------------------------
+
+# X JAWS
+
+/gate/linac/daughters/name              X1Jaw
+/gate/linac/daughters/insert            box
+/gate/X1Jaw/setMaterial                 AcceleratorCollimatorLeafMaterial
+/gate/X1Jaw/geometry/setXLength         78 mm
+/gate/X1Jaw/geometry/setYLength         250 mm
+/gate/X1Jaw/geometry/setZLength         30 mm
+/gate/X1Jaw/placement/setTranslation    60.0 0.0 -411.0 mm
+/gate/X1Jaw/vis/setVisible              1
+/gate/X1Jaw/vis/setColor                cyan
+
+/gate/linac/daughters/name              X2Jaw
+/gate/linac/daughters/insert            box
+/gate/X2Jaw/setMaterial                 AcceleratorCollimatorLeafMaterial
+/gate/X2Jaw/geometry/setXLength         78 mm
+/gate/X2Jaw/geometry/setYLength         250 mm
+/gate/X2Jaw/geometry/setZLength         30 mm
+/gate/X2Jaw/placement/setTranslation    -60.0 0.0 -411.0 mm
+/gate/X2Jaw/vis/setVisible              1
+/gate/X2Jaw/vis/setColor                cyan
+
+## X Jaw KILL PLANE
+
+/gate/X1Jaw/daughters/name                      X1Jaw_Kill_Plane
+/gate/X1Jaw/daughters/insert                    box
+/gate/X1Jaw_Kill_Plane/setMaterial              AcceleratorCollimatorLeafMaterial
+/gate/X1Jaw_Kill_Plane/geometry/setXLength      78 mm  
+/gate/X1Jaw_Kill_Plane/geometry/setYLength      250 mm
+/gate/X1Jaw_Kill_Plane/geometry/setZLength      1 nm
+/gate/X1Jaw_Kill_Plane/placement/setTranslation 0.0 0.0 14.0 mm
+/gate/X1Jaw_Kill_Plane/vis/setColor             blue
+/gate/X1Jaw_Kill_Plane/vis/setVisible           0
+
+/gate/X2Jaw/daughters/name                      X2Jaw_Kill_Plane
+/gate/X2Jaw/daughters/insert                    box
+/gate/X2Jaw_Kill_Plane/setMaterial              AcceleratorCollimatorLeafMaterial
+/gate/X2Jaw_Kill_Plane/geometry/setXLength      78 mm  
+/gate/X2Jaw_Kill_Plane/geometry/setYLength      250 mm
+/gate/X2Jaw_Kill_Plane/geometry/setZLength      1 nm
+/gate/X2Jaw_Kill_Plane/placement/setTranslation 0.0 0.0 14.0 mm
+/gate/X2Jaw_Kill_Plane/vis/setColor             blue
+/gate/X2Jaw_Kill_Plane/vis/setVisible           0
+
+#Y JAWS
+
+/gate/linac/daughters/name              Y1Jaw
+/gate/linac/daughters/insert            box
+/gate/Y1Jaw/setMaterial                 AcceleratorCollimatorLeafMaterial
+/gate/Y1Jaw/geometry/setXLength         250 mm
+/gate/Y1Jaw/geometry/setYLength         78 mm
+/gate/Y1Jaw/geometry/setZLength         78 mm
+/gate/Y1Jaw/placement/setTranslation    0.0 60.0 -470.0 mm
+/gate/Y1Jaw/vis/setVisible              1
+/gate/Y1Jaw/vis/setColor                red
+
+/gate/linac/daughters/name              Y2Jaw
+/gate/linac/daughters/insert            box
+/gate/Y2Jaw/setMaterial                 AcceleratorCollimatorLeafMaterial
+/gate/Y2Jaw/geometry/setXLength         250 mm
+/gate/Y2Jaw/geometry/setYLength         78 mm
+/gate/Y2Jaw/geometry/setZLength         78 mm
+/gate/Y2Jaw/placement/setTranslation    0.0 -60.0 -470.0 mm
+/gate/Y2Jaw/vis/setVisible              1
+/gate/Y2Jaw/vis/setColor                red
+
+
+## Y Jaw KILL PLANE
+
+/gate/Y1Jaw/daughters/name                      Y1Jaw_Kill_Plane
+/gate/Y1Jaw/daughters/insert                    box
+/gate/Y1Jaw_Kill_Plane/setMaterial              AcceleratorCollimatorLeafMaterial
+/gate/Y1Jaw_Kill_Plane/geometry/setXLength      250 mm  
+/gate/Y1Jaw_Kill_Plane/geometry/setYLength      78 mm
+/gate/Y1Jaw_Kill_Plane/geometry/setZLength      1 nm
+/gate/Y1Jaw_Kill_Plane/placement/setTranslation 0.0 0.0 38.0 mm
+/gate/Y1Jaw_Kill_Plane/vis/setColor             yellow
+/gate/Y1Jaw_Kill_Plane/vis/setVisible           0
+
+/gate/Y2Jaw/daughters/name                      Y2Jaw_Kill_Plane
+/gate/Y2Jaw/daughters/insert                    box
+/gate/Y2Jaw_Kill_Plane/setMaterial              AcceleratorCollimatorLeafMaterial
+/gate/Y2Jaw_Kill_Plane/geometry/setXLength      250 mm  
+/gate/Y2Jaw_Kill_Plane/geometry/setYLength      78 mm
+/gate/Y2Jaw_Kill_Plane/geometry/setZLength      1 nm
+/gate/Y2Jaw_Kill_Plane/placement/setTranslation 0.0 0.0 38.0 mm
+/gate/Y2Jaw_Kill_Plane/vis/setColor             yellow
+/gate/Y2Jaw_Kill_Plane/vis/setVisible           0
+

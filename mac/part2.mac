@@ -1,0 +1,197 @@
+
+#=====================================================
+# VERBOSITY
+#=====================================================
+
+/control/execute mac/verbose.mac
+
+#=====================================================
+# VISUALISATION
+#=====================================================
+
+/control/execute mac/visu.mac
+
+# =====================================================
+# GEOMETRY
+# =====================================================
+
+/gate/geometry/setMaterialDatabase data/GateMaterials.db
+
+# WORLD
+/gate/world/setMaterial            Air
+/gate/world/geometry/setXLength    1 m
+/gate/world/geometry/setYLength    1 m
+/gate/world/geometry/setZLength    2.5 m
+/gate/world/vis/setVisible 1
+# =====================================================
+# LINAC HEAD
+# =====================================================
+
+# World origin is in the center of the beam e- source (not the real
+# isocenter of the gantry room)
+/gate/geometry/setMaterialDatabase data/LinacMaterials.db
+/control/execute mac/linac_head.mac
+# =====================================================
+# PHASE SPACE
+# =====================================================
+
+#/gate/linac/placement/setTranslation 0 0 1000 mm
+/gate/linac/daughters/name               PhS_Plane
+/gate/linac/daughters/insert             cylinder
+/gate/PhS_Plane/setMaterial              Vacuum
+/gate/PhS_Plane/geometry/setRmin         0 mm
+/gate/PhS_Plane/geometry/setRmax         70 mm
+/gate/PhS_Plane/geometry/setHeight       1 nm
+/gate/PhS_Plane/placement/setTranslation 0.0 0.0 -280 mm
+/gate/PhS_Plane/vis/setColor             white
+/gate/PhS_Plane/vis/setVisible           1
+
+/gate/linac/daughters/name                      kill_box_behind
+/gate/linac/daughters/insert                    cylinder
+/gate/kill_box_behind/setMaterial              Vacuum
+/gate/kill_box_behind/geometry/setRmin         0 mm
+/gate/kill_box_behind/geometry/setRmax         50 cm
+/gate/kill_box_behind/geometry/setHeight       10 mm
+/gate/kill_box_behind/placement/setTranslation 0.0 0.0 -270.0 mm
+/gate/kill_box_behind/vis/setVisible           0
+/gate/kill_box_behind/vis/setColor           green
+# =====================================================
+# MLC
+# =====================================================
+
+/gate/linac/daughters/name MLC
+/gate/linac/daughters/insert box
+/gate/MLC/setMaterial Air
+/gate/MLC/geometry/setXLength 500.0 mm  
+/gate/MLC/geometry/setYLength 500.0 mm  
+/gate/MLC/geometry/setZLength 100.0 mm   
+/gate/MLC/placement/setTranslation 0.0 0.0 -337 mm #652 mm
+/gate/MLC/vis/setVisible 0
+# All leafs
+#/control/execute mac/linac_MLC.mac
+
+# =====================================================
+# SECONDARY JAWS
+# =====================================================
+/control/execute mac/linac_jaws.mac
+
+# =====================================================
+# WATERBOX
+# =====================================================
+/gate/world/daughters/name              waterbox
+/gate/world/daughters/insert            box
+/gate/waterbox/setMaterial              Water
+/gate/waterbox/placement/setTranslation 0 0 -1000 mm
+/gate/waterbox/geometry/setXLength      300 mm
+/gate/waterbox/geometry/setYLength      300 mm
+/gate/waterbox/geometry/setZLength      300 mm
+/gate/waterbox/vis/setColor             blue
+
+# =====================================================
+# PHYSICS
+# =====================================================
+
+/gate/physics/addPhysicsList emstandard_opt3
+
+/gate/physics/Gamma/SetCutInRegion      world 1 mm
+/gate/physics/Electron/SetCutInRegion   world 1 mm
+/gate/physics/Positron/SetCutInRegion   world 1 mm
+
+/gate/physics/Gamma/SetCutInRegion      waterbox 0.5 mm
+/gate/physics/Electron/SetCutInRegion   waterbox 0.5 mm
+/gate/physics/Positron/SetCutInRegion   waterbox 0.5 mm
+
+#=====================================================
+# DETECTORS
+#=====================================================
+
+# ----------------------------------------------------
+# Kill actor to stop particles when they go inside a region
+/gate/actor/addActor                      KillActor Phs_Killer
+/gate/actor/Phs_Killer/attachTo         kill_box_behind
+
+#/control/execute mac/kill_box.mac
+
+# ----------------------------------------------------
+# the following actor regularly store the current number of
+# event/track/step in a file
+
+ /gate/actor/addActor               SimulationStatisticActor stat
+ /gate/actor/stat/save              output/output-writePhS-stat.txt
+ /gate/actor/stat/saveEveryNSeconds 20
+
+# ----------------------------------------------------
+# the following actor stores 3D Dose/Edep distributions
+
+/gate/actor/addActor                               DoseActor  doseDistribution
+/gate/actor/doseDistribution/attachTo    	   waterbox
+/gate/actor/doseDistribution/stepHitType           random
+/gate/actor/doseDistribution/setPosition           0 0 0 mm
+/gate/actor/doseDistribution/setVoxelSize          5 5 5 mm
+/gate/actor/doseDistribution/saveEveryNSeconds     20
+/gate/actor/doseDistribution/enableEdep            true
+/gate/actor/doseDistribution/enableUncertaintyEdep true
+/gate/actor/doseDistribution/enableDose            true
+/gate/actor/doseDistribution/enableNumberOfHits    false
+/gate/actor/doseDistribution/save                  output/output-full.mhd
+
+/gate/actor/addActor                        DoseActor  depthdose
+/gate/actor/depthdose/save                  output/gamma-depth.txt
+/gate/actor/depthdose/attachTo    	        waterbox
+/gate/actor/depthdose/stepHitType           random
+/gate/actor/depthdose/setPosition           0 0 0 mm
+/gate/actor/depthdose/setVoxelSize          300 300 3 mm
+/gate/actor/depthdose/setResolution         1 1 100
+/gate/actor/depthdose/saveEveryNSeconds     20
+/gate/actor/depthdose/enableEdep            true
+/gate/actor/depthdose/enableUncertaintyEdep true
+/gate/actor/depthdose/enableDose            false
+/gate/actor/depthdose/enableUncertaintyDose false
+/gate/actor/depthdose/enableNumberOfHits    false
+
+/gate/actor/addActor                          DoseActor  doseprofile
+/gate/actor/doseprofile/save                  output/gamma-profile.txt
+/gate/actor/doseprofile/attachTo    	      waterbox
+/gate/actor/doseprofile/stepHitType           random
+/gate/actor/doseprofile/setPosition           0 0 30 mm
+/gate/actor/doseprofile/setResolution         100 1 1
+/gate/actor/doseprofile/setSize               37.5 300 300 mm
+/gate/actor/doseprofile/saveEveryNSeconds     20
+/gate/actor/doseprofile/enableEdep            true
+/gate/actor/doseprofile/enableUncertaintyEdep true
+/gate/actor/doseprofile/enableDose            false
+/gate/actor/doseprofile/enableUncertaintyDose false
+/gate/actor/doseprofile/enableNumberOfHits    false
+
+#=====================================================
+# INITIALISATION
+#=====================================================
+
+/gate/run/initialize
+#/process/em/setSecBiasing conv waterbox 10 10 MeV
+
+#=====================================================
+# BEAMS
+#=====================================================
+
+/gate/source/addSource                         beam_g phaseSpace
+#/gate/source/beam_g/addPhaseSpaceFile          output/PhS-50k-g.root
+/gate/source/beam_g/addPhaseSpaceFile          output/output-PhS-g2.root
+#/gate/source/beam_g/addPhaseSpaceFile          output/output-PhS-g.root
+/gate/source/beam_g/setParticleType            gamma
+/gate/source/beam_g/attachTo                   PhS_Plane
+/gate/source/beam_g/useRandomSymmetry          true
+
+
+#=====================================================
+# START BEAMS
+#=====================================================
+
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+/gate/application/noGlobalOutput
+
+#/tracking/verbose 2
+
+/gate/application/setTotalNumberOfPrimaries 5000
+/gate/application/start
