@@ -16,7 +16,7 @@ Pre - Requisites
 How to run
 
   $ cd photon_linac  
-  $ source <PATH TO GATE INSTALL DIRECTORY>/bin/gate_env.sh  
+  $ source \<PATH TO GATE INSTALL DIRECTORY>/bin/gate_env.sh  
   $ mkdir output  
   $ Gate mac/part1.mac --qt  
 
