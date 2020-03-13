@@ -15,20 +15,21 @@ Pre - Requisites
 
 How to run
 
-$ cd photon_linac
-$ source <PATH TO GATE INSTALL DIRECTORY>/bin/gate_env.sh
-$ Gate mac/part1.mac --qt
+  $ cd photon_linac
+  $ source <PATH TO GATE INSTALL DIRECTORY>/bin/gate_env.sh
+  $ mkdir output
+  $ Gate mac/part1.mac --qt
 
 This creates output-PhS-g.root file in output folder. The phase space can be analyzed using root command.
-$ root
-$ root [0] TBrowser t 
+  $ root
+  $ root [0] TBrowser t 
 
 Navigate to the phase space root file in the browser and analyze its components. Other graphs for analysis can also be viewed using -
-$ root [1] .x PhS-Analysis.C
+  $ root [1] .x PhS-Analysis.C
 
 Use .q to exit from root. The root file is used as the source for transportation of the photon beams to the phantom. The second part is executed as follows - 
 
-$ Gate mac/part2.mac --qt
+  $ Gate mac/part2.mac --qt
 
 This creates the following output files in the output folder
 
@@ -41,6 +42,6 @@ This creates the following output files in the output folder
 
 The output files can be analyzed using python graphs
 
-$ python3 py/plot.py
+  $ python3 py/plot.py
 
 For more details, check out the references in the sources file in the main directory.
