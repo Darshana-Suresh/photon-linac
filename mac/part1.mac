@@ -81,8 +81,8 @@
 /gate/actor/PhS_g/save 	             output/output-PhS-g.root
 #/gate/actor/PhS_g/save 	                     output/output-PhS-g.npy
 /gate/actor/PhS_g/enableParticleName         false
-/gate/actor/PhS_g/enableProductionVolume     false
-/gate/actor/PhS_g/enableProductionProcess    false
+/gate/actor/PhS_g/enableProductionVolume     true
+/gate/actor/PhS_g/enableProductionProcess    true
 /gate/actor/PhS_g/useVolumeFrame             true
 /gate/actor/PhS_g/addFilter                  particleFilter
 /gate/actor/PhS_g/particleFilter/addParticle gamma
@@ -109,7 +109,7 @@
 
 # Bremsstrahlung splitting : generate 100 photon (if below 100 MeV) with weight 1/100
 
-/process/em/setSecBiasing eBrem target 100 100 MeV
+#/process/em/setSecBiasing eBrem target 100 100 MeV
 
 #=====================================================
 # BEAMS
@@ -143,5 +143,5 @@
 
 #/tracking/verbose 2
 
-/gate/application/setTotalNumberOfPrimaries 10
+/gate/application/setTotalNumberOfPrimaries 500
 /gate/application/start

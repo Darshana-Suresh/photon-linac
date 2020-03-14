@@ -1,14 +1,15 @@
 
-/vis/open OGLI
-#/vis/open OGLIQt
+#/vis/open OGLIQt #Uncomment this line if you want to view OGL immediate view without Qt
+/vis/open OGLS
 /vis/drawVolume
 /vis/viewer/flush
 /vis/viewer/set/viewpointThetaPhi 70 20
 /vis/viewer/set/autoRefresh false
+/vis/ogl/set/displayListLimit 50000
 
 /tracking/storeTrajectory             1
 /vis/scene/add/trajectories
-#/vis/scene/endOfEventAction           accumulate 
+/vis/scene/endOfEventAction           accumulate 
 
 /vis/scene/add/axes            0 0 0 500 mm
 /vis/scene/add/text            10 0 0 cm  20 0 0   X

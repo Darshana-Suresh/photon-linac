@@ -9,14 +9,20 @@ source.
 - part2.mac : read a root phase space file as a source
 
 Pre - Requisites
-- Gate v8.2 
+- Gate v8.2  https://opengate.readthedocs.io/en/latest/compilation_instructions.html#compilation-instructions-label
 - Root 6.10.04
 - python 3.6.9 (Only for output analysis)
+- vv (Again, for analysing .mhd 3d output files)
+   https://www.creatis.insa-lyon.fr/rio/vv/ 
 
 How to run
 
     $ cd photon_linac  
     $ source \<PATH TO GATE INSTALL DIRECTORY>/bin/gate_env.sh  
+    $ Gate mac/main.mac --qt
+
+main.mac displays the geometric simulation of the linac. To run the beam production -
+
     $ Gate mac/part1.mac --qt
 
 This creates output-PhS-g.root file in output folder. The phase space can be analyzed using root command.  
