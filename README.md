@@ -1,6 +1,6 @@
 
 
-This example  illustrates the simulation of a linac head. The first part
+This is an updated version of a linac head simulation from https://github.com/OpenGATE/GateContrib/tree/master/dosimetry/Radiotherapy/example12  illustrates the simulation of a linac head. The first part
 aims at obtaining a phase-space (PhS) from electron source to a plane
 just before the MLC. The second part makes use of this PhS as a
 source.
@@ -18,7 +18,7 @@ Pre - Requisites
 How to run
 
     $ cd photon_linac  
-    $ source \<PATH TO GATE INSTALL DIRECTORY>/bin/gate_env.sh  
+    $ source <PATH TO GATE INSTALL DIRECTORY>/bin/gate_env.sh  
     $ Gate mac/main.mac --qt
 
 main.mac displays the geometric simulation of the linac. To run the beam production -

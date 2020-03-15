@@ -35,7 +35,6 @@
 # PHASE SPACE
 # =====================================================
 
-#/gate/linac/placement/setTranslation 0 0 1000 mm
 /gate/linac/daughters/name               PhS_Plane
 /gate/linac/daughters/insert             cylinder
 /gate/PhS_Plane/setMaterial              Vacuum
@@ -68,7 +67,7 @@
 /gate/MLC/placement/setTranslation 0.0 0.0 -337 mm #652 mm
 /gate/MLC/vis/setVisible 0
 # All leafs
-#/control/execute mac/linac_MLC.mac
+/control/execute mac/linac_MLC.mac
 
 # =====================================================
 # SECONDARY JAWS
@@ -87,6 +86,7 @@
 /gate/waterbox/geometry/setZLength      300 mm
 /gate/waterbox/vis/setColor             blue
 
+
 # =====================================================
 # PHYSICS
 # =====================================================
@@ -101,6 +101,9 @@
 /gate/physics/Electron/SetCutInRegion   waterbox 0.5 mm
 /gate/physics/Positron/SetCutInRegion   waterbox 0.5 mm
 
+/gate/physics/addProcess PhotoElectric gamma
+/gate/physics/processes/PhotoElectric/setModel PenelopeModel
+
 #=====================================================
 # DETECTORS
 #=====================================================
@@ -110,7 +113,16 @@
 /gate/actor/addActor                      KillActor Phs_Killer
 /gate/actor/Phs_Killer/attachTo         kill_box_behind
 
-#/control/execute mac/kill_box.mac
+/control/execute mac/kill_box.mac
+
+/gate/actor/addActor                         PhaseSpaceActor PhS_Phantom
+/gate/actor/PhS_Phantom/attachTo                   waterbox
+/gate/actor/PhS_Phantom/save 	             output/waterbox-particles.root
+/gate/actor/PhS_Phantom/enableParticleName         true
+/gate/actor/PhS_Phantom/enableProductionVolume     true
+/gate/actor/PhS_Phantom/enableProductionProcess    true
+/gate/actor/PhS_Phantom/useVolumeFrame             true
+/gate/actor/PhS_Phantom/enableZPosition            true
 
 # ----------------------------------------------------
 # the following actor regularly store the current number of

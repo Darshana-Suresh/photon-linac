@@ -109,7 +109,7 @@
 
 # Bremsstrahlung splitting : generate 100 photon (if below 100 MeV) with weight 1/100
 
-#/process/em/setSecBiasing eBrem target 100 100 MeV
+/process/em/setSecBiasing eBrem target 100 100 MeV
 
 #=====================================================
 # BEAMS
@@ -143,5 +143,5 @@
 
 #/tracking/verbose 2
 
-/gate/application/setTotalNumberOfPrimaries 500
+/gate/application/setTotalNumberOfPrimaries 5000
 /gate/application/start
