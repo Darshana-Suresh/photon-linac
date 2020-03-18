@@ -1,6 +1,6 @@
 
 
-This is an updated version of a linac head simulation from https://github.com/OpenGATE/GateContrib/tree/master/dosimetry/Radiotherapy/example12  illustrates the simulation of a linac head. The first part
+This is an updated version of a linac head simulation from https://github.com/OpenGATE/GateContrib/tree/master/dosimetry/Radiotherapy/example12  The first part
 aims at obtaining a phase-space (PhS) from electron source to a plane
 just before the MLC. The second part makes use of this PhS as a
 source.

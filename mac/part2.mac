@@ -3,7 +3,7 @@
 # VERBOSITY
 #=====================================================
 
-/control/execute mac/verbose.mac
+#/control/execute mac/verbose.mac
 
 #=====================================================
 # VISUALISATION
@@ -101,8 +101,8 @@
 /gate/physics/Electron/SetCutInRegion   waterbox 0.5 mm
 /gate/physics/Positron/SetCutInRegion   waterbox 0.5 mm
 
-/gate/physics/addProcess PhotoElectric gamma
-/gate/physics/processes/PhotoElectric/setModel PenelopeModel
+#/gate/physics/addProcess PhotoElectric gamma
+#/gate/physics/processes/PhotoElectric/setModel PenelopeModel
 
 #=====================================================
 # DETECTORS
@@ -180,7 +180,6 @@
 #=====================================================
 
 /gate/run/initialize
-#/process/em/setSecBiasing conv waterbox 10 10 MeV
 
 #=====================================================
 # BEAMS
