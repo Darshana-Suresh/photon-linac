@@ -19,6 +19,7 @@ How to run
 
     $ cd photon_linac  
     $ source <PATH TO GATE INSTALL DIRECTORY>/bin/gate_env.sh  
+    $ mkdir output
     $ Gate mac/main.mac --qt
 
 main.mac displays the geometric simulation of the linac. To run the beam production -
@@ -38,18 +39,20 @@ Use .q to exit from root. The root file is used as the source for transportation
 
     $ Gate mac/part2.mac --qt
 
-This creates the following output files in the output folder
-
-- gamma-depth-Edep.txt
-- gamma-depth-Edep-Uncertainty.txt
-- gamma-depth-Edep-Squared.txt
-- gamma-profile-Edep.txt
-- gamma-profile-Edep-Uncertainty.txt
-- gamma-profile-Edep-Squared.txt
-
-The output files can be analyzed using python graphs
+This creates the output files in the output folder.
+These files can be analyzed using python graphs -
 
     $ python3 py/plot.py
 
-For more details, check out the references in the sources file in the main directory.
+The .mhd files can be opened using vv
+
+    $ vv output/<filename>.mhd
+
+To obtain a grid view of the .mhd files, run
+
+    $ Gate mac/results.mac --qt
+
+The present code opens output-full-Edep.mhd, you can change accordingly.
+
+For more details, check out the references in the sources.md file in the main directory.
 
