@@ -1,0 +1,13 @@
+ObjectType = Image
+NDims = 3
+BinaryData = True
+BinaryDataByteOrderMSB = False
+CompressedData = False
+TransformMatrix = 1 0 0 0 1 0 0 0 1
+Offset = -147 -147 -147
+CenterOfRotation = 0 0 0
+ElementSpacing = 6 6 6
+DimSize = 50 50 50
+AnatomicalOrientation = ???
+ElementType = MET_FLOAT
+ElementDataFile = 3d-pat-Edep.raw
