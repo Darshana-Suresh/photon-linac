@@ -2,12 +2,12 @@
 
 #------------------------------MLCs
 
-/gate/actor/addActor                           KillActor Left_Leaf_Killer
-/gate/actor/Left_Leaf_Killer/attachTo          MLC_Leaf1_Left_Leaf_Kill_Plane
+#/gate/actor/addActor                           KillActor Left_Leaf_Killer
+#/gate/actor/Left_Leaf_Killer/attachTo          MLC_Leaf1_Left_Leaf_Kill_Plane
 #/gate/actor/Left_Leaf_Killer/save              output/killPhS_L.txt
 
-/gate/actor/addActor                           KillActor Right_Leaf_Killer
-/gate/actor/Right_Leaf_Killer/attachTo         MLC_Leaf2_Right_Leaf_Kill_Plane
+#/gate/actor/addActor                           KillActor Right_Leaf_Killer
+#/gate/actor/Right_Leaf_Killer/attachTo         MLC_Leaf2_Right_Leaf_Kill_Plane
 #/gate/actor/Right_Leaf_Killer/save             output/killPhS_R.txt
 
 #------------------------------X Jaws

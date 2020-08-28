@@ -44,7 +44,7 @@
 
 ############################################  IMAGE GOES HERE #################################################
 
-/gate/patient/geometry/setImage                 output/output-full-Edep.mhd
+/gate/patient/geometry/setImage                 exp/gamma30-Dose.mhd
 
 #################################################################################################################
 /gate/patient/placement/setTranslation 0 0 272 mm

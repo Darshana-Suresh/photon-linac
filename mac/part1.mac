@@ -1,15 +1,15 @@
 
 #=====================================================
-# VERBOSITY
+# VERBOSITY - shows verbose results
 #=====================================================
 
-/control/execute mac/verbose.mac
+#/control/execute mac/verbose.mac
 
 #=====================================================
-# VISUALISATION
+# VISUALISATION - shows 3D visualization (OpenGL)
 #=====================================================
 
-/control/execute mac/visu.mac
+#/control/execute mac/visu.mac
 
 # =====================================================
 # GEOMETRY
@@ -44,6 +44,7 @@
 # =====================================================
 # PHYSICS
 # =====================================================
+#Production thresholds
 
 /gate/physics/addPhysicsList emstandard_opt3
 
@@ -79,7 +80,6 @@
 /gate/actor/addActor                         PhaseSpaceActor PhS_g
 /gate/actor/PhS_g/attachTo                   PhS_Plane
 /gate/actor/PhS_g/save 	             output/output-PhS-g.root
-#/gate/actor/PhS_g/save 	                     output/output-PhS-g.npy
 /gate/actor/PhS_g/enableParticleName         false
 /gate/actor/PhS_g/enableProductionVolume     true
 /gate/actor/PhS_g/enableProductionProcess    true
@@ -129,9 +129,10 @@
 /gate/source/mybeam/gps/ang/type      beam1d
 /gate/source/mybeam/gps/ang/sigma_r   0 deg
 /gate/source/mybeam/gps/ene/type      Gauss
-/gate/source/mybeam/gps/ene/mono      6 MeV
+/gate/source/mybeam/gps/ene/mono      6.7 MeV
 /gate/source/mybeam/gps/ene/sigma     0.077 MeV
 /gate/source/mybeam/gps/direction     0 0 -1
+
 
 #=====================================================
 # START BEAMS
@@ -143,5 +144,5 @@
 
 #/tracking/verbose 2
 
-/gate/application/setTotalNumberOfPrimaries 5000
+/gate/application/setTotalNumberOfPrimaries 50000
 /gate/application/start

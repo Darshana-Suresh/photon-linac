@@ -11,7 +11,7 @@
 /gate/X1Jaw/geometry/setXLength         78 mm
 /gate/X1Jaw/geometry/setYLength         250 mm
 /gate/X1Jaw/geometry/setZLength         30 mm
-/gate/X1Jaw/placement/setTranslation    60.0 0.0 -411.0 mm
+/gate/X1Jaw/placement/setTranslation    64.0 0.0 -411.0 mm
 /gate/X1Jaw/vis/setVisible              1
 /gate/X1Jaw/vis/setColor                cyan
 
@@ -21,7 +21,7 @@
 /gate/X2Jaw/geometry/setXLength         78 mm
 /gate/X2Jaw/geometry/setYLength         250 mm
 /gate/X2Jaw/geometry/setZLength         30 mm
-/gate/X2Jaw/placement/setTranslation    -60.0 0.0 -411.0 mm
+/gate/X2Jaw/placement/setTranslation    -64.0 0.0 -411.0 mm
 /gate/X2Jaw/vis/setVisible              1
 /gate/X2Jaw/vis/setColor                cyan
 
@@ -55,7 +55,7 @@
 /gate/Y1Jaw/geometry/setXLength         250 mm
 /gate/Y1Jaw/geometry/setYLength         78 mm
 /gate/Y1Jaw/geometry/setZLength         78 mm
-/gate/Y1Jaw/placement/setTranslation    0.0 60.0 -470.0 mm
+/gate/Y1Jaw/placement/setTranslation    0.0 64.0 -470.0 mm
 /gate/Y1Jaw/vis/setVisible              1
 /gate/Y1Jaw/vis/setColor                red
 
@@ -65,7 +65,7 @@
 /gate/Y2Jaw/geometry/setXLength         250 mm
 /gate/Y2Jaw/geometry/setYLength         78 mm
 /gate/Y2Jaw/geometry/setZLength         78 mm
-/gate/Y2Jaw/placement/setTranslation    0.0 -60.0 -470.0 mm
+/gate/Y2Jaw/placement/setTranslation    0.0 -64.0 -470.0 mm
 /gate/Y2Jaw/vis/setVisible              1
 /gate/Y2Jaw/vis/setColor                red
 
